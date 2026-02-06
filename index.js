@@ -6,14 +6,19 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-let tomb = [];
+let magassagok = [];
 
 rl.question("Adja meg az adatok számát: ", (answer) => {
     let darab = answer;
     for (let i = 0; i < darab; i++){
         let adat = Math.floor(Math.random() * (200 - 150 + 1) + 150);
         console.log(adat);
-        tomb.push(adat);
+        magassagok.push(adat);
+    }
+    
+    for (let i = 0; i < magassagok.length;i++){
+        // console.log(magassagok[i]);
+        fs.writeFileSync('./magassagok.txt',magassagok[i].toString() + '\n',{ flag: 'a' });
     }
     rl.close();
 });
